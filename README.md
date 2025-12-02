@@ -1,1 +1,3 @@
-# proyecto-final-firebase-BD-nueva-todas-las-tablas-
+# Django
+
+A Django starter template as per the docs: https://docs.djangoproject.com/en/5.0/intro/tutorial01/

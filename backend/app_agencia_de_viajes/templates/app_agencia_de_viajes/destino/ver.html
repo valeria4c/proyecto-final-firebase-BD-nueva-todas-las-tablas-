@@ -1,0 +1,45 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Ver Destinos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Destinos</h1>
+    <a href="{% url 'agregar_destino' %}" class="btn btn-primary mb-3">Agregar Destino</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>País</th>
+                    <th>Continente</th>
+                    <th>Descripción</th>
+                    <th>Atracciones</th>
+                    <th>Clima</th>
+                    <th>Divisa</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for destino in destinos %}
+                <tr>
+                    <td>{{ destino.id_destino }}</td>
+                    <td>{{ destino.nombre_destino }}</td>
+                    <td>{{ destino.pais }}</td>
+                    <td>{{ destino.continente }}</td>
+                    <td>{{ destino.descripcion }}</td>
+                    <td>{{ destino.atracciones_principales }}</td>
+                    <td>{{ destino.clima }}</td>
+                    <td>{{ destino.divisa_local }}</td>
+                    <td>
+                        <a href="{% url 'actualizar_destino' destino.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'eliminar_destino' destino.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

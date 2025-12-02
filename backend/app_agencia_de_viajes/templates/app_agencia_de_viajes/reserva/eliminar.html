@@ -1,0 +1,17 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Eliminar Reserva{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Eliminar Reserva</h1>
+    <div class="alert alert-danger" role="alert">
+        ¿Estás seguro de que quieres eliminar la reserva de <strong>{{ reserva.cliente }}</strong> para el paquete <strong>{{ reserva.paquete_turistico }}</strong>?
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'ver_reservas' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

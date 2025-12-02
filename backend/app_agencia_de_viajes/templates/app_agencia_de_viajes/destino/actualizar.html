@@ -1,0 +1,19 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Actualizar Destino{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Actualizar Destino</h1>
+    <div class="card">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Actualizar</button>
+                <a href="{% url 'ver_destinos' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

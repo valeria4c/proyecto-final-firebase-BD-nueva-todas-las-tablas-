@@ -1,0 +1,49 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Ver Alojamientos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Alojamientos</h1>
+    <a href="{% url 'agregar_alojamiento' %}" class="btn btn-primary mb-3">Agregar Alojamiento</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Hotel</th>
+                    <th>Tipo</th>
+                    <th>Dirección</th>
+                    <th>Ciudad</th>
+                    <th>País</th>
+                    <th>Estrellas</th>
+                    <th>Precio/Noche</th>
+                    <th>Servicios</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alojamiento in alojamientos %}
+                <tr>
+                    <td>{{ alojamiento.id_alojamiento }}</td>
+                    <td>{{ alojamiento.nombre_hotel }}</td>
+                    <td>{{ alojamiento.tipo_alojamiento }}</td>
+                    <td>{{ alojamiento.direccion }}</td>
+                    <td>{{ alojamiento.ciudad }}</td>
+                    <td>{{ alojamiento.pais }}</td>
+                    <td>{{ alojamiento.estrellas }}</td>
+                    <td>${{ alojamiento.precio_noche_estandar }}</td>
+                    <td>{{ alojamiento.servicios_incluidos }}</td>
+                    <td>{{ alojamiento.telefono }}</td>
+                    <td>
+                        <a href="{% url 'actualizar_alojamiento' alojamiento.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'eliminar_alojamiento' alojamiento.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

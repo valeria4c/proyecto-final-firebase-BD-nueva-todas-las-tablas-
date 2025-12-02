@@ -1,0 +1,17 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Eliminar Vuelo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Eliminar Vuelo</h1>
+    <div class="alert alert-danger" role="alert">
+        ¿Estás seguro de que quieres eliminar el vuelo de <strong>{{ vuelo.origen }}</strong> a <strong>{{ vuelo.destino }}</strong>?
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'ver_vuelos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
