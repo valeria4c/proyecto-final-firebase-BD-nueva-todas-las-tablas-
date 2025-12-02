@@ -30,7 +30,7 @@
                     <td>{{ reserva.fecha_reserva }}</td>
                     <td>{{ reserva.num_adultos }}</td>
                     <td>{{ reserva.num_ninos }}</td>
-                    <td>${{ reserva.precio_total }}</td>
+                    <td>${{ reserva.total_pagado }}</td>
                     <td>{{ reserva.estado_reserva }}</td>
                     <td>
                         <a href="{% url 'actualizar_reserva' reserva.pk %}" class="btn btn-sm btn-info">Editar</a>
