@@ -73,6 +73,12 @@ class Agente_Viajes(models.Model):
 # MODELO: Reserva_Viaje
 # ==========================================
 class Reserva_Viaje(models.Model):
+    ESTADO_CHOICES = [
+        ('Pendiente', 'Pendiente'),
+        ('Confirmada', 'Confirmada'),
+        ('Cancelada', 'Cancelada'),
+    ]
+
     id_reserva = models.IntegerField(primary_key=True)
     id_paquete = models.ForeignKey(Paquete_Turistico, on_delete=models.CASCADE)
     id_cliente = models.ForeignKey(Cliente_Viajes, on_delete=models.CASCADE)
@@ -80,7 +86,7 @@ class Reserva_Viaje(models.Model):
     num_adultos = models.IntegerField()
     num_ninos = models.IntegerField(blank=True, null=True, default=0)
     total_pagado = models.DecimalField(max_digits=10, decimal_places=2)
-    estado_reserva = models.CharField(max_length=50) # Ej: 'Pendiente', 'Confirmada', 'Cancelada'
+    estado_reserva = models.CharField(max_length=50, choices=ESTADO_CHOICES)
     fecha_vencimiento_pago = models.DateField(blank=True, null=True)
     id_agente_venta = models.ForeignKey(Agente_Viajes, on_delete=models.SET_NULL, blank=True, null=True)
 
